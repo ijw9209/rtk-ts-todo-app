@@ -27,6 +27,10 @@ export const todoSlice = createSlice({
         // const { text } = action.payload;
         state.push({id : uuidv4(), text : action.payload, completed : false });
     },
+    deleteTodo : (state , action : PayloadAction<string>) => {
+        return state.filter((item) => item.id !== action.payload);
+    },
+
     // decrement: (state) => {
     //   state.value -= 1
     // },
@@ -37,7 +41,7 @@ export const todoSlice = createSlice({
   },
 })
 
-export const { addTodo } = todoSlice.actions
+export const { addTodo , deleteTodo} = todoSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectTodos = (state: RootState) => state.todos
