@@ -1,6 +1,6 @@
-import { createSlice , PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
+import type { RootState } from '../../app/store';
 
 // Define a type for the slice state
 interface Todo {
@@ -11,11 +11,11 @@ interface Todo {
 
 // Define the initial state using that type
 const initialState: Todo[] = [
-    {
-        id : uuidv4(),
-        text : '테스트',
-        completed : false
-    }
+  {
+    id: uuidv4(),
+    text: '테스트',
+    completed: false,
+  },
 ];
 
 export const todoSlice = createSlice({
@@ -23,13 +23,11 @@ export const todoSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    addTodo: (state , action: PayloadAction<string>) => {
-        // const { text } = action.payload;
-        state.push({id : uuidv4(), text : action.payload, completed : false });
+    addTodo: (state, action: PayloadAction<string>) => {
+      // const { text } = action.payload;
+      state.push({ id: uuidv4(), text: action.payload, completed: false });
     },
-    deleteTodo : (state , action : PayloadAction<string>) => {
-        return state.filter((item) => item.id !== action.payload);
-    },
+    deleteTodo: (state, action : PayloadAction<string>) => state.filter((item) => item.id !== action.payload),
 
     // decrement: (state) => {
     //   state.value -= 1
@@ -39,11 +37,11 @@ export const todoSlice = createSlice({
     //   state.value += action.payload
     // },
   },
-})
+});
 
-export const { addTodo , deleteTodo} = todoSlice.actions
+export const { addTodo, deleteTodo } = todoSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectTodos = (state: RootState) => state.todos
+export const selectTodos = (state: RootState) => state.todos;
 
-export default todoSlice.reducer
+export default todoSlice.reducer;

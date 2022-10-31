@@ -1,25 +1,24 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 
-import { AppDispatch, RootState } from "../../app/store";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 
-import { addTodo, deleteTodo } from "./todoSlice";
+// meterial Ui
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 
-//meterial Ui
-import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import List from '@mui/material/List';
+import { addTodo, deleteTodo } from './todoSlice';
+import { AppDispatch, RootState } from '../../app/store';
 
-import List from "@mui/material/List";
-
-//css modules import
+// css modules import
 import styles from './TodoList.module.css';
 
-//todoItem 컴포넌트 추가
-import TodoItem from './TodoItem'
+// todoItem 컴포넌트 추가
+import TodoItem from './TodoItem';
 
 function TodoList() {
   const todoList = useSelector((state: RootState) => state.todos);
@@ -27,11 +26,11 @@ function TodoList() {
 
   // console.log(dispatch);
 
-  let [txt, setTxt] = useState("");
+  const [txt, setTxt] = useState('');
   return (
     <CssBaseline>
       <Container fixed>
-        <Box sx={{ height: "100vh" }}>
+        <Box sx={{ height: '100vh' }}>
           <h1 className={styles.center}>Todo List</h1>
           <div className={styles.center}>
             <TextField
@@ -41,13 +40,13 @@ function TodoList() {
               label="todo Input"
               variant="standard"
               value={txt}
-            ></TextField>
+            />
             <Button
-              style={{ marginTop: "10px", marginLeft: "10px" }}
+              style={{ marginTop: '10px', marginLeft: '10px' }}
               variant="outlined"
               onClick={(e) => {
                 dispatch(addTodo(txt));
-                setTxt('')
+                setTxt('');
                 console.log(e);
               }}
             >
@@ -59,22 +58,21 @@ function TodoList() {
             <List
               dense
               sx={{
-                margin: "0 auto",
-                width: "100%",
+                margin: '0 auto',
+                width: '100%',
                 maxWidth: 360,
-                bgcolor: "background.paper",
+                bgcolor: 'background.paper',
               }}
             >
               {todoList.map((item) => (
-                <TodoItem todo={item}/>
+                <TodoItem todo={item} />
               ))}
             </List>
           </div>
         </Box>
       </Container>
     </CssBaseline>
-  )
+  );
 }
-
 
 export default TodoList;
