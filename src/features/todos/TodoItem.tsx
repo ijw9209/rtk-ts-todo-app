@@ -13,11 +13,11 @@ import { AppDispatch } from '../../app/store';
 import styles from './TodoItem.module.css';
 
 interface Todo {
-  id : string;
-  text : string;
-  completed : boolean
+  id: string;
+  text: string;
+  completed: boolean;
 }
-function TodoItem({ todo } : { todo: Todo }) {
+function TodoItem({ todo }: { todo: Todo }) {
   const dispatch = useDispatch<AppDispatch>();
   return (
     <Card className={styles.card} style={{ marginTop: '20px' }}>
@@ -26,16 +26,13 @@ function TodoItem({ todo } : { todo: Todo }) {
           style={{ justifyContent: 'space-between' }}
           disableGutters
           key={todo.id}
-              // dispatch 추가
+          // dispatch 추가
           onClick={() => {
             dispatch(deleteTodo(todo.id));
           }}
         >
-          {todo.text}
-          {' '}
-          <DeleteOutlineIcon
-            style={{ float: 'right', cursor: 'pointer' }}
-          />
+          {todo.text}{' '}
+          <DeleteOutlineIcon style={{ float: 'right', cursor: 'pointer' }} />
         </ListItem>
       </CardContent>
     </Card>

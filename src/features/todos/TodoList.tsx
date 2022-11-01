@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 import List from '@mui/material/List';
-import { addTodo, deleteTodo } from './todoSlice';
+import { addTodo } from './todoSlice';
 import { AppDispatch, RootState } from '../../app/store';
 
 // css modules import

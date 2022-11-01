@@ -4,9 +4,9 @@ import type { RootState } from '../../app/store';
 
 // Define a type for the slice state
 interface Todo {
-  id : string;
-  text : string;
-  completed : boolean
+  id: string;
+  text: string;
+  completed: boolean;
 }
 
 // Define the initial state using that type
@@ -27,7 +27,8 @@ export const todoSlice = createSlice({
       // const { text } = action.payload;
       state.push({ id: uuidv4(), text: action.payload, completed: false });
     },
-    deleteTodo: (state, action : PayloadAction<string>) => state.filter((item) => item.id !== action.payload),
+    deleteTodo: (state, action: PayloadAction<string>) =>
+      state.filter((item) => item.id !== action.payload),
 
     // decrement: (state) => {
     //   state.value -= 1
